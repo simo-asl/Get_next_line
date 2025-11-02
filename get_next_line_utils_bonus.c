@@ -6,7 +6,7 @@
 /*   By: mel-asla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 13:45:10 by mel-asla          #+#    #+#             */
-/*   Updated: 2025/10/28 14:14:59 by mel-asla         ###   ########.fr       */
+/*   Updated: 2025/11/02 18:34:55 by mel-asla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,35 +62,50 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-static char	*ft_copy(char *d, const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (d + i);
-}
-
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*d;
-	char	*p;
-	size_t	len;
+	size_t	i;
+	size_t	j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	len = ft_strlen(s1);
-	len += ft_strlen(s2);
-	d = malloc(len + 1);
+	d = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!d)
 		return (NULL);
-	p = d;
-	p = ft_copy(p, s1);
-	p = ft_copy(p, s2);
-	*p = '\0';
+	i = 0;
+	while (s1[i])
+	{
+		d[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+		d[i++] = s2[j++];
+	d[i] = '\0';
 	return (d);
+}
+
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	sub = malloc(len + 1);
+	if (!sub)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start + i])
+	{
+		sub[i] = s[start + i];
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }
