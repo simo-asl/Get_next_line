@@ -6,11 +6,11 @@
 /*   By: mel-asla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 13:45:10 by mel-asla          #+#    #+#             */
-/*   Updated: 2025/11/02 18:34:55 by mel-asla         ###   ########.fr       */
+/*   Updated: 2025/11/03 12:20:20 by mel-asla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -86,7 +86,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (d);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
