@@ -6,15 +6,28 @@
 /*   By: mel-asla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:19:43 by mel-asla          #+#    #+#             */
-/*   Updated: 2025/11/03 12:03:28 by mel-asla         ###   ########.fr       */
+/*   Updated: 2025/11/04 16:56:43 by mel-asla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*ft_read(int fd, char *buffer)
+static char	*ft_helper(char *buffer, char *buf)
 {
 	char	*tmp;
+
+	if (!buffer)
+		tmp = ft_strdup(buf);
+	else
+	{
+		tmp = ft_strjoin(buffer, buf);
+		free(buffer);
+	}
+	return (tmp);
+}
+
+static char	*ft_read(int fd, char *buffer)
+{
 	char	*buf;
 	ssize_t	bytes;
 
@@ -31,14 +44,7 @@ static char	*ft_read(int fd, char *buffer)
 			return (NULL);
 		}
 		buf[bytes] = '\0';
-		if (!buffer)
-			tmp = ft_strdup(buf);
-		else
-		{
-			tmp = ft_strjoin(buffer, buf);
-			free(buffer);
-		}
-		buffer = tmp;
+		buffer = ft_helper(buffer, buf);
 	}
 	free(buf);
 	return (buffer);
