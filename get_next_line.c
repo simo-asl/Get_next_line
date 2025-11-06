@@ -6,7 +6,7 @@
 /*   By: mel-asla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 17:16:23 by mel-asla          #+#    #+#             */
-/*   Updated: 2025/11/05 10:46:20 by mel-asla         ###   ########.fr       */
+/*   Updated: 2025/11/06 15:53:08 by mel-asla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static char	*ft_read(int fd, char *buffer)
 		buf[bytes] = '\0';
 		buffer = ft_helper(buffer, buf);
 	}
+	free(buf);
 	return (buffer);
 }
 
