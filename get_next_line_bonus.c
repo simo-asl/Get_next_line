@@ -6,7 +6,7 @@
 /*   By: mel-asla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:19:43 by mel-asla          #+#    #+#             */
-/*   Updated: 2025/11/04 16:56:43 by mel-asla         ###   ########.fr       */
+/*   Updated: 2025/11/07 07:57:20 by mel-asla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static char	*ft_buffering(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	new_buffer = ft_substr(buffer, i + 1, ft_strlen(buffer) - i - 1);
+	new_buffer = ft_substr(buffer, i + 1, ft_strlen(buffer) - (i + 1));
 	free(buffer);
 	return (new_buffer);
 }
